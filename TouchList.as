@@ -3,6 +3,20 @@
  * @blog http://www.thanksmister.com
  * @twitter Thanksmister
  * Copyright (c) 2010
+ * 
+ * TouchList is an ActionScript 3 scrolling list for Android mobile phones. I used and modified some code
+ * within the component from other Flex/Flash examples for scrolling lists by the following people or location:
+ * 
+ * Dan Florio ( polyGeek )
+ * polygeek.com/2846_flex_adding-physics-to-your-gestures
+ * 
+ * James Ward
+ * www.jamesward.com/2010/02/19/flex-4-list-scrolling-on-android-with-flash-player-10-1/
+ * 
+ * FlepStudio
+ * www.flepstudio.org/forum/flepstudio-utilities/4973-tipper-vertical-scroller-iphone-effect.html
+ * 
+ * You may use this code for your personal or professional projects, just be sure to give credit where credit is due.
  * */
 package 
 {
