@@ -18,11 +18,12 @@ package
 
 	public class TouchListItemRenderer extends Sprite implements ITouchListItemRenderer
 	{
-		protected var _data:String = "";
+		protected var _data:Object;
 		protected var _index:Number = 0;
 		protected var _itemWidth:Number = 0;
 		protected var _itemHeight:Number = 0;
 		
+		protected var initialized:Boolean = false;
 		protected var textField:TextField;
 		protected var shadowFilter:DropShadowFilter;
 
@@ -48,11 +49,11 @@ package
 			draw();
 		}
 		
-		public function get data():String
+		public function get data():Object
 		{
 			return _data;
 		}
-		public function set data(value:String):void
+		public function set data(value:Object):void
 		{
 			_data = value;
 			draw();
@@ -129,13 +130,19 @@ package
 				this.addChild(textField);
 			}
 			
+			initialized = true;
+			
+			draw();
+			
 			shadowFilter = new DropShadowFilter(3, 90, 0x000000, .6, 8, 8, 1, 2, true);
 		}
 		
 		protected function draw():void
 		{
+			if(!initialized) return 
+				
 			textField.x = 5;
-			textField.text = data;
+			textField.text = String(data);
 			textField.height = textField.textHeight;
 			textField.width = itemWidth - 10;
 			textField.y = itemHeight/2 - textField.textHeight/2;
@@ -156,9 +163,11 @@ package
 		/**
 		 * Clean up item when removed from stage.
 		 * */
-		protected function destroy():void
+		protected function destroy(e:Event):void
 		{
-			removeEventListener(Event.REMOVED, destroy);
+			trace("destroy");
+			
+			removeEventListener(Event.REMOVED_FROM_STAGE, destroy);
 			removeEventListener(MouseEvent.MOUSE_UP, selectHandler);
 			
 			this.removeChild(textField);
@@ -169,6 +178,8 @@ package
 			textField = null;
 			shadowFilter = null;
 			_data = null;
+			
+			initialized = false;
 		}
 		
 		// ----- event handlers --------

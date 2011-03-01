@@ -10,8 +10,8 @@ package
 {
 	public interface ITouchListItemRenderer
 	{
-		function set data(value:String):void;
-		function get data():String;
+		function set data(value:Object):void;
+		function get data():Object;
 		function set index(value:Number):void;
 		function get index():Number;
 		function set itemWidth(value:Number):void;
