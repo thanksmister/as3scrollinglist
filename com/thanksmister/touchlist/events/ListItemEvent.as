@@ -6,10 +6,11 @@
  * 
  * Custom list event, can be modified to add any event or payload you wish. 
  * */
-package
+package com.thanksmister.touchlist.events
 {
 	import flash.display.DisplayObject;
 	import flash.events.Event;
+	import com.thanksmister.touchlist.renderers.ITouchListItemRenderer;
 	
 	public class ListItemEvent extends Event
 	{

@@ -21,6 +21,9 @@ package
 	import flash.system.Capabilities;
 	import flash.text.TextField;
 	import flash.ui.Keyboard;
+	import com.thanksmister.touchlist.renderers.TouchListItemRenderer;
+	import com.thanksmister.touchlist.events.ListItemEvent;
+	import com.thanksmister.touchlist.controls.TouchList;
 	
 	[SWF( width = '480', height = '800', backgroundColor = '#000000', frameRate = '24')]
 	public class AS3ScrollingList extends MovieClip

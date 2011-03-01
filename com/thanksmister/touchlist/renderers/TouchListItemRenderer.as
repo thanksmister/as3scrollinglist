@@ -7,7 +7,7 @@
  * TouchListItemRendeer is the default item renderere, it implements ITouchListRenderer.  
  * You can make your own custom renderer by implementing ITouchListRenderer.
  * */
-package
+package com.thanksmister.touchlist.renderers
 {
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -15,6 +15,7 @@ package
 	import flash.filters.DropShadowFilter;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
+	import com.thanksmister.touchlist.events.ListItemEvent;
 
 	public class TouchListItemRenderer extends Sprite implements ITouchListItemRenderer
 	{

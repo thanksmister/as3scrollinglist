@@ -6,7 +6,7 @@
  * 
  * ITouchListItemRenderer must be implemented in any item renderer you want to use for the list.
  * */
-package
+package com.thanksmister.touchlist.renderers
 {
 	public interface ITouchListItemRenderer
 	{

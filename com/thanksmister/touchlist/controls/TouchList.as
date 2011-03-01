@@ -18,7 +18,7 @@
  * 
  * You may use this code for your personal or professional projects, just be sure to give credit where credit is due.
  * */
-package 
+package com.thanksmister.touchlist.controls 
 {
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
@@ -28,6 +28,8 @@ package
 	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
+	import com.thanksmister.touchlist.renderers.ITouchListItemRenderer;
+	import com.thanksmister.touchlist.events.ListItemEvent;
 	
 
 	public class TouchList extends Sprite
