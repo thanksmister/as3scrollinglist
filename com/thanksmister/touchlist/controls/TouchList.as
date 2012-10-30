@@ -75,7 +75,7 @@ package com.thanksmister.touchlist.controls
 			scrollAreaHeight = listHeight;
 
 			addEventListener(Event.ADDED_TO_STAGE, init);
-			addEventListener(Event.REMOVED, destroy);
+			addEventListener(Event.REMOVED_FROM_STAGE, destroy);
 		}
 		
 		private function init(e:Event):void
