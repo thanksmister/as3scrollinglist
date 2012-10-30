@@ -1,3 +1,9 @@
-AS3 Scrolling List for Android and iOS devices built as a Flash Professional Project in Adobe Flash Builder 4
+ActionScript 3 (AS3) Scrolling List for Android and iOS mobile devices.  
+
+Features:
+
+* Cross-platform list for iOS and Android
+* List Item Events broadcast when items touched.
+* List Item Renderers for changing appearance of list items
 
 MIT License: http://www.opensource.org/licenses/mit-license.php
