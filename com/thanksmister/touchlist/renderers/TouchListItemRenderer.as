@@ -71,7 +71,7 @@ package com.thanksmister.touchlist.renderers
 		
 		public function TouchListItemRenderer()
 		{
-			addEventListener(Event.REMOVED, destroy);
+			addEventListener(Event.REMOVED_FROM_STAGE, destroy);
 			
 			addEventListener(MouseEvent.MOUSE_DOWN, pressHandler);
 			

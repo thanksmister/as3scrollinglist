@@ -414,7 +414,7 @@ package com.thanksmister.touchlist.controls
 		 * */
 		protected function destroy(e:Event):void
 		{
-			removeEventListener(Event.REMOVED, destroy);
+			removeEventListener(Event.REMOVED_FROM_STAGE, destroy);
 			removeListItems();
 			tapDelayTime = 0;
 			tapEnabled = false;
