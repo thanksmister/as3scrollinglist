@@ -8,7 +8,6 @@
  * */
 package com.thanksmister.touchlist.events
 {
-	import flash.display.DisplayObject;
 	import flash.events.Event;
 	import com.thanksmister.touchlist.renderers.ITouchListItemRenderer;
 	

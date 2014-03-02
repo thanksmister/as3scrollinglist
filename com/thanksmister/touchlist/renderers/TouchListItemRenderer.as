@@ -71,7 +71,7 @@ package com.thanksmister.touchlist.renderers
 		
 		public function TouchListItemRenderer()
 		{
-			addEventListener(Event.REMOVED, destroy);
+			addEventListener(Event.REMOVED_FROM_STAGE, destroy);
 			
 			addEventListener(MouseEvent.MOUSE_DOWN, pressHandler);
 			
@@ -98,10 +98,12 @@ package com.thanksmister.touchlist.renderers
 			
 			this.graphics.clear();
 			
+			// Background
 			this.graphics.beginFill(0xCC6600, .9);
 			this.graphics.drawRect(0, 0, itemWidth, itemHeight);
 			this.graphics.endFill();
 			
+			// Border Line
 			this.graphics.beginFill(0xEAEAEA, .5);
 			this.graphics.drawRect(0, _itemHeight - 1, itemWidth, .5);
 			this.graphics.endFill();
@@ -150,10 +152,12 @@ package com.thanksmister.touchlist.renderers
 			
 			this.graphics.clear();
 			
+			// Background
 			this.graphics.beginFill(0x000000, 1);
 			this.graphics.drawRect(0, 0, itemWidth, itemHeight);
 			this.graphics.endFill();
 			
+			// Border Line
 			this.graphics.beginFill(0xEAEAEA, .5);
 			this.graphics.drawRect(0, itemHeight - 1, itemWidth, .5);
 			this.graphics.endFill();

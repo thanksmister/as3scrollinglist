@@ -21,7 +21,6 @@
 package com.thanksmister.touchlist.controls 
 {
 	import flash.display.DisplayObject;
-	import flash.display.MovieClip;
 	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -46,7 +45,7 @@ package com.thanksmister.touchlist.controls
 		
 		//------ Scrolling ---------------
 		
-		private var scrollBar:MovieClip;
+		private var scrollBar:Shape;
 		private var lastY:Number = 0; // last touch position
 		private var firstY:Number = 0; // first touch position
 		private var listY:Number = 0; // initial list position on touch 
@@ -105,7 +104,7 @@ package com.thanksmister.touchlist.controls
 			}
 			
 			listHitArea.graphics.clear();
-			listHitArea.graphics.beginFill(0x000000, 1);
+			listHitArea.graphics.beginFill(0);
 			listHitArea.graphics.drawRect(0, 0, listWidth, listHeight)
 			listHitArea.graphics.endFill();
 			
@@ -115,7 +114,7 @@ package com.thanksmister.touchlist.controls
 			}
 			
 			list.graphics.clear();
-			list.graphics.beginFill(0x000000, 1);
+			list.graphics.beginFill(0);
 			list.graphics.drawRect(0, 0, listWidth, listHeight)
 			list.graphics.endFill();
 			list.mask = listHitArea;
@@ -127,7 +126,7 @@ package com.thanksmister.touchlist.controls
 		private function createScrollBar():void
 		{
 			if(!scrollBar) {
-				scrollBar = new MovieClip();
+				scrollBar = new Shape();
 				addChild(scrollBar);
 			}
 			
@@ -159,11 +158,8 @@ package com.thanksmister.touchlist.controls
 			createScrollBar(); // resize scrollbar
 			
 			// resize each list item
-			var children:Number = list.numChildren;
-			for (var i:int = 0; i < children; i++) {
-				var item:DisplayObject = list.getChildAt(i);
-				ITouchListItemRenderer(item).itemWidth = listWidth;
-			}
+			for each (var item:ITouchListItemRenderer in list)
+				item.itemWidth = listWidth;
 		}
 		
 		/**
@@ -244,17 +240,17 @@ package com.thanksmister.touchlist.controls
 	
 			if(Math.abs(totalY) > scrollRatio) isTouching = true;
 
-			if(isTouching) {
-				
+			if(isTouching)
+			{
 				diffY = mouseY - lastY;	
 				lastY = mouseY;
 
 				if(totalY < minY)
 					totalY = minY - Math.sqrt(minY - totalY);
-			
+				
 				if(totalY > maxY)
 					totalY = maxY + Math.sqrt(totalY - maxY);
-			
+				
 				list.y = listY + totalY;
 				
 				onTapDisabled();
@@ -291,36 +287,37 @@ package com.thanksmister.touchlist.controls
 		private function onListTimer(e:Event):void
 		{
 			// test for touch or tap event
-			if(tapEnabled) {
+			if(tapEnabled)
 				onTapDelay();
-			}
 			
 			// scroll the list on mouse up
 			if(!isTouching) {
 				
-				if(list.y > 0) {
+				if (list.y > 0)
+				{
 					inertiaY = 0;
 					list.y *= 0.3;
 					
-					if(list.y < 1) {
+					if(list.y < 1)
 						list.y = 0;
-					}
-				} else if(scrollListHeight >= listHeight && list.y < listHeight - scrollListHeight) {
+				}
+				else if(scrollListHeight >= listHeight && list.y < listHeight - scrollListHeight)
+				{
 					inertiaY = 0;
-
 					var diff:Number = (listHeight - scrollListHeight) - list.y;
 					
 					if(diff > 1)
 						diff *= 0.1;
-
+					
 					list.y += diff;
-				} else if(scrollListHeight < listHeight && list.y < 0) {
+				}
+				else if (scrollListHeight < listHeight && list.y < 0)
+				{
 					inertiaY = 0;
 					list.y *= 0.8;
 					
-					if(list.y > -1) {
+					if(list.y > -1)
 						list.y = 0;
-					}
 				}
 				
 				if( Math.abs(inertiaY) > 1) {
@@ -329,7 +326,7 @@ package com.thanksmister.touchlist.controls
 				} else {
 					inertiaY = 0;
 				}
-			
+				
 				if(inertiaY != 0) {
 					if(scrollBar.alpha < 1 )
 						scrollBar.alpha = Math.min(1, scrollBar.alpha + 0.1);
@@ -339,7 +336,7 @@ package com.thanksmister.touchlist.controls
 					if(scrollBar.alpha > 0 )
 						scrollBar.alpha = Math.max(0, scrollBar.alpha - 0.1);
 				}
-		
+			
 			} else {
 				if(scrollBar.alpha < 1)
 					scrollBar.alpha = Math.min(1, scrollBar.alpha + 0.1);
@@ -414,7 +411,7 @@ package com.thanksmister.touchlist.controls
 		 * */
 		protected function destroy(e:Event):void
 		{
-			removeEventListener(Event.REMOVED, destroy);
+			removeEventListener(Event.REMOVED_FROM_STAGE, destroy);
 			removeListItems();
 			tapDelayTime = 0;
 			tapEnabled = false;
